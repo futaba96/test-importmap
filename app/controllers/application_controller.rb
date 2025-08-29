@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
-  allow_browser versions: :modern
+  # 開発環境では制限なし（本番環境のみ modern なブラウザを許可）
+  unless Rails.env.development?
+    allow_browser versions: :modern
+  end
 end
